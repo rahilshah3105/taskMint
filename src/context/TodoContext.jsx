@@ -15,7 +15,8 @@ export const TodoProvider = ({ children }) => {
                     ...t,
                     text: t.text || t.todo || "", // Handle legacy 'todo' property
                     priority: t.priority || "Medium",
-                    category: t.category || "Personal"
+                    category: t.category || "Personal",
+                    subtasks: t.subtasks || [] // Handle legacy subtasks missing
                 }));
             } catch (e) {
                 console.error("Failed to parse todos", e);
@@ -26,6 +27,7 @@ export const TodoProvider = ({ children }) => {
     });
     const [query, setQuery] = useState('');
     const [filter, setFilter] = useState('all'); // all, active, completed
+    const [sortBy, setSortBy] = useState('created'); // created, dueDate, priority
 
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos));
@@ -40,6 +42,7 @@ export const TodoProvider = ({ children }) => {
             category,
             dueDate,
             createdAt: new Date().toISOString(),
+            subtasks: []
         };
         setTodos((prev) => [newTodo, ...prev]);
     };
@@ -59,6 +62,7 @@ export const TodoProvider = ({ children }) => {
             if (allCompleted) {
                 confetti({
                     particleCount: 100,
+                    style: { zIndex: 1000 },
                     spread: 70,
                     origin: { y: 0.6 }
                 });
@@ -75,6 +79,54 @@ export const TodoProvider = ({ children }) => {
         );
     };
 
+    const addSubtask = (todoId, text) => {
+        setTodos((prev) =>
+            prev.map((todo) =>
+                todo.id === todoId
+                    ? {
+                          ...todo,
+                          subtasks: [
+                              ...(todo.subtasks || []),
+                              { id: uuidv4(), text, isCompleted: false },
+                          ],
+                      }
+                    : todo
+            )
+        );
+    };
+
+    const toggleSubtask = (todoId, subtaskId) => {
+        setTodos((prev) =>
+            prev.map((todo) =>
+                todo.id === todoId
+                    ? {
+                          ...todo,
+                          subtasks: (todo.subtasks || []).map((sub) =>
+                              sub.id === subtaskId ? { ...sub, isCompleted: !sub.isCompleted } : sub
+                          ),
+                      }
+                    : todo
+            )
+        );
+    };
+
+    const deleteSubtask = (todoId, subtaskId) => {
+        setTodos((prev) =>
+            prev.map((todo) =>
+                todo.id === todoId
+                    ? {
+                          ...todo,
+                          subtasks: (todo.subtasks || []).filter((sub) => sub.id !== subtaskId),
+                      }
+                    : todo
+            )
+        );
+    };
+
+    const clearCompletedTodos = () => {
+        setTodos((prev) => prev.filter((todo) => !todo.isCompleted));
+    };
+
     const filteredTodos = todos.filter((todo) => {
         const todoText = todo.text || ""; // Safety check
         const matchesQuery = todoText.toLowerCase().includes(query.toLowerCase());
@@ -87,6 +139,21 @@ export const TodoProvider = ({ children }) => {
         return matchesQuery && matchesFilter;
     });
 
+    const priorityWeights = { High: 3, Medium: 2, Low: 1 };
+
+    const sortedTodos = [...filteredTodos].sort((a, b) => {
+        if (sortBy === 'dueDate') {
+            if (!a.dueDate) return 1;
+            if (!b.dueDate) return -1;
+            return new Date(a.dueDate) - new Date(b.dueDate);
+        }
+        if (sortBy === 'priority') {
+            return priorityWeights[b.priority] - priorityWeights[a.priority];
+        }
+        // default 'created'
+        return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+    });
+
     const stats = {
         total: todos.length,
         completed: todos.filter((t) => t.isCompleted).length,
@@ -97,19 +164,27 @@ export const TodoProvider = ({ children }) => {
         <TodoContext.Provider
             value={{
                 todos,
-                filteredTodos,
+                filteredTodos: sortedTodos,
                 query,
                 setQuery,
                 filter,
                 setFilter,
+                sortBy,
+                setSortBy,
                 addTodo,
                 deleteTodo,
                 toggleTodo,
                 editTodo,
-                stats
+                addSubtask,
+                toggleSubtask,
+                deleteSubtask,
+                clearCompletedTodos,
+                stats,
+                setTodos
             }}
         >
             {children}
         </TodoContext.Provider>
     );
 };
+

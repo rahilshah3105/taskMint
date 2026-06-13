@@ -1,0 +1,177 @@
+/* ToolPage.css */
+
+.tool-page {
+  padding: 1rem 0;
+  max-width: 100%;
+}
+
+.tool-header h2 {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.dark .tool-header h2 {
+  color: #f8fafc;
+}
+
+.tool-header p {
+  color: #475569;
+  font-size: 0.975rem;
+}
+
+.dark .tool-header p {
+  color: #94a3b8;
+}
+
+/* Developer App Card Styles */
+.developer-app-card {
+  display: block;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.dark .developer-app-card {
+  background-color: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+.developer-app-card:hover {
+  transform: translateY(-4px);
+  border-color: #10b981;
+  box-shadow: 0 12px 20px -8px rgba(16, 185, 129, 0.15);
+}
+
+.dark .developer-app-card:hover {
+  border-color: #34d399;
+  box-shadow: 0 12px 20px -8px rgba(52, 211, 153, 0.25);
+}
+
+/* Card Header Layout */
+.developer-app-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.developer-app-card-header-left {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.app-card-icon-wrapper {
+  background-color: #f1f5f9;
+  padding: 10px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.dark .app-card-icon-wrapper {
+  background-color: #334155;
+}
+
+.developer-app-card:hover .app-card-icon-wrapper {
+  background-color: #e6f4ea;
+}
+
+.dark .developer-app-card:hover .app-card-icon-wrapper {
+  background-color: #064e3b;
+}
+
+.developer-app-card-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.app-card-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #059669;
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  width: fit-content;
+  display: inline-block;
+  line-height: 1.25;
+}
+
+.dark .app-card-tag {
+  color: #34d399;
+  background-color: rgba(6, 78, 59, 0.35);
+  border-color: rgba(52, 211, 153, 0.2);
+}
+
+
+.developer-app-card-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  transition: color 0.2s;
+}
+
+.dark .developer-app-card-title {
+  color: #f8fafc;
+}
+
+.developer-app-card-icon {
+  color: #94a3b8;
+  transition: all 0.2s;
+}
+
+.developer-app-card:hover .developer-app-card-icon {
+  color: #10b981;
+  transform: translate(2px, -2px);
+}
+
+.dark .developer-app-card:hover .developer-app-card-icon {
+  color: #34d399;
+}
+
+/* Card Description */
+.developer-app-card-description {
+  font-size: 0.875rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.dark .developer-app-card-description {
+  color: #cbd5e1;
+}
+
+/* Custom Scrollbar for list container */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 3px;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #475569;
+}
