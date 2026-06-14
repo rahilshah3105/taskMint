@@ -16,9 +16,17 @@ const TodoItem = forwardRef(({ todo, onEdit }, ref) => {
         High: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
     };
 
+    const categoryColors = {
+        Personal: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400',
+        Work: 'bg-blue-100 text-blue-700 dark:bg-blue-950/40 dark:text-blue-400',
+        Shopping: 'bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-500',
+        Fitness: 'bg-purple-100 text-purple-700 dark:bg-purple-950/40 dark:text-purple-400',
+    };
+
     const subtasks = todo.subtasks || [];
     const totalSubtasks = subtasks.length;
     const completedSubtasks = subtasks.filter(s => s.isCompleted).length;
+    const isOverdue = todo.dueDate && !todo.isCompleted && new Date(todo.dueDate) < new Date().setHours(0, 0, 0, 0);
 
     const handleAddSubtaskSubmit = (e) => {
         e.preventDefault();
@@ -50,7 +58,7 @@ const TodoItem = forwardRef(({ todo, onEdit }, ref) => {
                             <MdCheckBoxOutlineBlank />
                         )}
                     </button>
-
+ 
                     <div className="flex flex-col overflow-hidden">
                         <span
                             className={clsx(
@@ -64,12 +72,13 @@ const TodoItem = forwardRef(({ todo, onEdit }, ref) => {
                             <span className={clsx('px-2 py-0.5 rounded-md font-medium', priorityColors[todo.priority])}>
                                 {todo.priority}
                             </span>
-                            <span className="bg-gray-200 dark:bg-slate-700 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded-md">
+                            <span className={clsx('px-2 py-0.5 rounded-md font-medium', categoryColors[todo.category] || 'bg-gray-200 dark:bg-slate-700 text-gray-600 dark:text-gray-300')}>
                                 {todo.category}
                             </span>
                             {todo.dueDate && (
-                                <span className="text-gray-500 dark:text-gray-400 flex items-center">
+                                <span className={clsx("flex items-center gap-1", isOverdue ? "text-red-500 dark:text-red-400 font-semibold" : "text-gray-500 dark:text-gray-400")}>
                                     Due: {new Date(todo.dueDate).toLocaleDateString()}
+                                    {isOverdue && <span className="px-1 bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 text-[9px] uppercase font-black rounded">Overdue</span>}
                                 </span>
                             )}
                             {totalSubtasks > 0 && (
@@ -78,6 +87,14 @@ const TodoItem = forwardRef(({ todo, onEdit }, ref) => {
                                 </span>
                             )}
                         </div>
+                        {totalSubtasks > 0 && (
+                            <div className="w-full bg-gray-200 dark:bg-slate-700 h-1 rounded-full mt-2 overflow-hidden max-w-[150px]" title={`${Math.round((completedSubtasks / totalSubtasks) * 100)}% completed`}>
+                                <div
+                                    className="bg-emerald-500 dark:bg-emerald-400 h-full rounded-full transition-all duration-500"
+                                    style={{ width: `${(completedSubtasks / totalSubtasks) * 100}%` }}
+                                />
+                            </div>
+                        )}
                     </div>
                 </div>
 

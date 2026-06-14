@@ -4,30 +4,16 @@ import TodoInput from './TodoInput';
 import TodoFilters from './TodoFilters';
 import TodoList from './TodoList';
 import TodoStats from './TodoStats';
+import EditTaskModal from './EditTaskModal';
 
 const Main = () => {
     const { editTodo } = useTodos();
-    // Simple edit mode state could be handled here or in a modal
-    // For now, we will just use prompt or a simple mechanism, 
-    // but proper 'Edit' mode often requires the input to be populated.
-    // Given the component structure, we might want to pass 'edit item' to TodoInput.
-    // However, for simplicity and modularity let's stick to the plan:
-    // The TodoInput handles creation. Editing can be inline or via a modal.
-    // Let's implement a simple prompt-based edit in TodoContext for now, OR better:
-    // Pass the item to be edited to a separate state which pops up a modal?
-    // Let's stick to basic "Delete" and "Toggle" for now as key features, 
-    // and maybe "Edit" updates the text via a prompt for simplicity in this turn,
-    // or we can skip complex edit logic to keep it clean.
-    // Actually, let's allow TodoInput to handle edits if we pass state?
-    // No, let's keep it simple: "Edit" will just prompt execution for now 
-    // to save time on building a modal, unless I want to Wow the user.
-    // Let's do a prompt for now to ensure reliability first.
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [selectedTodoToEdit, setSelectedTodoToEdit] = useState(null);
 
     const handleEdit = (todo) => {
-        const newText = prompt("Update task:", todo.text);
-        if (newText && newText.trim() !== "") {
-            editTodo(todo.id, newText, todo.priority, todo.category, todo.dueDate);
-        }
+        setSelectedTodoToEdit(todo);
+        setIsEditModalOpen(true);
     }
 
     return (
@@ -55,6 +41,17 @@ const Main = () => {
 
                 <TodoList onEdit={handleEdit} />
             </div>
+
+            {/* Custom Task Editor Modal */}
+            <EditTaskModal
+                todo={selectedTodoToEdit}
+                isOpen={isEditModalOpen}
+                onClose={() => {
+                    setIsEditModalOpen(false);
+                    setSelectedTodoToEdit(null);
+                }}
+                onSave={editTodo}
+            />
         </main>
     )
 }
