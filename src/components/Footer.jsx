@@ -27,7 +27,7 @@ export default function Footer({ currentTab, setCurrentTab }) {
 
         {/* Copyright */}
         <div className="text-xs text-gray-400 dark:text-gray-500">
-          &copy; {new Date().getFullYear()} TaskMint. All rights reserved.
+          &copy; {new Date().getFullYear()} TodoList. All rights reserved.
         </div>
       </div>
     </footer>

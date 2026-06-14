@@ -12,7 +12,7 @@ const Navbar = ({ currentTab, setCurrentTab }) => {
                 >
                     <MdCheckCircle className="text-3xl text-emerald-500 dark:text-emerald-400" />
                     <span className='font-bold text-xl tracking-tight text-gray-900 dark:text-white'>
-                        Task<span className="text-emerald-500 dark:text-emerald-400 font-extrabold">Mint</span>
+                        Todo<span className="text-emerald-500 dark:text-emerald-400 font-extrabold">List</span>
                     </span>
                 </div>
                 

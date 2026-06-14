@@ -1,11 +1,11 @@
-# 📝 TaskMint - Professional Developer Todo & Task Manager
+# 📝 Todo-list App - Professional Developer Task Manager
 
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer-motion&logoColor=white)](https://www.framer.com/motion/)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
-TaskMint is a premium, feature-rich task management web application custom-built for developers, freelancers, and power users who need a clean, responsive, and distraction-free workflow environment. Built on top of React, Tailwind CSS, and Framer Motion, it offers a seamless UX with smooth transitions, interactive animations, and glassmorphic designs.
+Todo-list App is a premium, feature-rich task management web application custom-built for developers, freelancers, and power users who need a clean, responsive, and distraction-free workflow environment. Built on top of React, Tailwind CSS, and Framer Motion, it offers a seamless UX with smooth transitions, interactive animations, and glassmorphic designs.
 
 ---
 
@@ -13,7 +13,7 @@ TaskMint is a premium, feature-rich task management web application custom-built
 
 Traditional project management tools are often bloated, slow, and require complex onboarding. On the other hand, simple todo apps lack crucial planning capabilities like priority levels, categorization, target due dates, and productivity analytics. 
 
-**TaskMint bridges this gap by offering:**
+**Todo-list App bridges this gap by offering:**
 * **Local-first, high-performance execution**: Immediate state updates with offline resilience.
 * **Structured workflow controls**: Easy division of labor by priority and categories.
 * **Gamified progress tracking**: Visual statistics and delightful confirmation animations that keep users engaged and motivated.
@@ -75,7 +75,7 @@ src/
 
 ## 🚀 Getting Started & Installation
 
-Follow these quick steps to get TaskMint up and running locally:
+Follow these quick steps to get Todo-list App up and running locally:
 
 ### Prerequisites
 Make sure you have [Node.js](https://nodejs.org/) (version 16 or higher) and `npm` installed.
