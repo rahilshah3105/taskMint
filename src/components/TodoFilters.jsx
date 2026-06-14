@@ -6,10 +6,10 @@ import { FaDownload, FaUpload, FaTrashAlt, FaSortAmountDown } from 'react-icons/
 import { v4 as uuidv4 } from 'uuid';
 
 const TodoFilters = () => {
-    const { 
-        filter, 
-        setFilter, 
-        query, 
+    const {
+        filter,
+        setFilter,
+        query,
         setQuery,
         sortBy,
         setSortBy,
@@ -29,7 +29,7 @@ const TodoFilters = () => {
         const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(todos, null, 2));
         const downloadAnchor = document.createElement('a');
         downloadAnchor.setAttribute("href", dataStr);
-        downloadAnchor.setAttribute("download", `todolist-backup-${new Date().toISOString().slice(0, 10)}.json`);
+        downloadAnchor.setAttribute("download", `taskmint-backup-${new Date().toISOString().slice(0, 10)}.json`);
         document.body.appendChild(downloadAnchor);
         downloadAnchor.click();
         downloadAnchor.remove();

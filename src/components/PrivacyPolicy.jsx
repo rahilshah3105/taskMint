@@ -17,14 +17,14 @@ export default function PrivacyPolicy() {
       </header>
 
       <div className="space-y-6 text-gray-700 dark:text-gray-300">
-        
+
         {/* Section 1: Intro */}
         <section className="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow duration-200">
           <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2 mb-3">
             <FaUserLock className="text-primary-600" /> 1. Overview
           </h2>
           <p className="leading-relaxed">
-            Welcome to <strong>TodoList</strong>. We are committed to protecting your personal information and your right to privacy. Since TodoList runs as a client-side application, your tasks, subtasks, categories, and settings are saved locally in your browser's <code className="bg-gray-200 dark:bg-slate-700 px-1.5 py-0.5 rounded text-sm text-red-500">localStorage</code>. We do not store or transmit your tasks to external databases.
+            Welcome to <strong>TaskMint</strong>. We are committed to protecting your personal information and your right to privacy. Since TaskMint runs as a client-side application, your tasks, subtasks, categories, and settings are saved locally in your browser's <code className="bg-gray-200 dark:bg-slate-700 px-1.5 py-0.5 rounded text-sm text-red-500">localStorage</code>. We do not store or transmit your tasks to external databases.
           </p>
         </section>
 
