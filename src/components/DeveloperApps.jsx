@@ -1,4 +1,5 @@
 import { ExternalLink, ClipboardList, Type, KeyRound, Newspaper, Code, Users } from 'lucide-react';
+import { FaChrome } from 'react-icons/fa';
 import './ToolPage.css';
 
 const APPS = [
@@ -31,18 +32,18 @@ const APPS = [
     icon: <Type size={22} className="text-purple-400" />
   },
   {
-    title: 'Task Manager',
-    description: 'Plan your day with a clean task board for creating, tracking, and completing daily to-dos.',
-    url: 'https://taskmint-tools.vercel.app/',
-    tag: 'Productivity',
-    icon: <ClipboardList size={22} className="text-indigo-400" />
-  },
-  {
     title: 'NewsPulse',
     description: 'Read latest headlines by category with a responsive news reader featuring bookmarks and dark mode.',
     url: 'https://getyournewspulse.netlify.app/',
     tag: 'Information',
     icon: <Newspaper size={22} className="text-amber-400" />
+  },
+  {
+    title: 'Chrome Extension',
+    description: 'Access all your favorite developer, social, and security utilities instantly from your browser toolbar.',
+    url: 'https://github.com/rahilshah3105',
+    tag: 'Extension',
+    icon: <FaChrome size={22} className="text-orange-400" />
   },
 ];
 
