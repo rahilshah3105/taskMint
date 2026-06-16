@@ -2,6 +2,24 @@
 <html lang="en">
 
 <head>
+  <script type="text/javascript">
+    // Prevent third-party scripts from blocking trackpad/mousewheel scrolling
+    (function() {
+      const originalAddEventListener = EventTarget.prototype.addEventListener;
+      EventTarget.prototype.addEventListener = function(type, listener, options) {
+        if (['wheel', 'mousewheel', 'DOMMouseScroll', 'touchmove'].includes(type)) {
+          if (options === undefined) {
+            options = { passive: true };
+          } else if (typeof options === 'boolean') {
+            options = { capture: options, passive: true };
+          } else if (typeof options === 'object') {
+            options.passive = true;
+          }
+        }
+        return originalAddEventListener.call(this, type, listener, options);
+      };
+    })();
+  </script>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml"
     href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy85A5DrA9ZuHJVkLWXZdw6b-fkuBUMlnIbQ&s" />
@@ -55,6 +73,7 @@
       }
     }
     </script>
+  <script src="https://pl29765336.effectivecpmnetwork.com/75/4c/d3/754cd3ede253fac6e3c00c9fa3135706.js"></script>
 </head>
 
 <body>
@@ -65,6 +84,7 @@
     var infolinks_wsid = 0;
   </script>
   <script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
+  <script src="https://pl29765341.effectivecpmnetwork.com/b0/c2/2b/b0c22b704c165fb3af621889a109f590.js"></script>
 </body>
 
 </html>
